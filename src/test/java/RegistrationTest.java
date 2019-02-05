@@ -1,19 +1,31 @@
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import webdriver.InizializeWebDriver;
+
 
 public class RegistrationTest {
-    @AfterTest
-    public void setUp(){
+
+    WebDriver wd;
+
+    @BeforeClass
+    public void setUp() {
+
+        wd = InizializeWebDriver.initializeChromeDriver("http://automationpractice.com/index.php?controller=authentication&back=my-account");
 
     }
-    @BeforeTest
-    public void tearDown(){
 
+    @AfterClass
+    public void tearDown() {
+        InizializeWebDriver.quitChromeDriver();
     }
+
     @Test
-    public void TestReg(){
-        
+        @Parameters({"locator", "mail"})
+    public void TestReg(String locator, String mail) {
+       System.out.println(locator);
+       System.out.println(mail);
     }
 }

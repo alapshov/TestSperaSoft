@@ -1,4 +1,7 @@
-package Pages;
+package pages;
+
+import webdriver.InizializeWebDriver;
 
 public class AutentificationForm {
+
 }
