@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="none">
-    <test name="Test">
-        <parameter name="locator" value="locator"/>
-        <parameter name="mail" value="mail"/>
+<suite name="Registration" parallel="none">
+    <test name="notCorrectMail">
         <classes>
             <class name="RegistrationTest">
-            </class>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Test2">
-        <parameter name="locator" value="locator"/>
-        <parameter name="mail" value="mail"/>
-        <classes>
-            <class name="RegistrationTest">
+                <methods>
+                    <include name="notCorrectMail">
+                        <parameter name="sendkeyslocators" value="email_create"/>
+                        <parameter name="sendkeys" value="email_create=asd@mail"/>
+                        <parameter name="buttonlocators" value="SubmitCreate"/>
+                    </include>
+                    <include name="regAccount">
+                        <parameter name="sendkeysMaillocators" value="email_create"/>
+                        <parameter name="sendkeysAccountLocators" value="customer_firstname,customer_lastname,passwd,firstname,lastname
+                                         ,address1,city,id_state,postcode,id_country,phone_mobile,alias"/>
+                        <parameter name="sendkeys" value="email_create=asd@mail.ru,customer_firstname=Иванов,customer_lastname=Иван,passwd=12345
+                        ,firstname=Иванов,lastname=Иван,address1=Какой-то адрес,city=Какой-то город,id_state=Alabama,postcode=400040,id_country=country
+                        ,phone_mobile=777777,alias=alias"/>
+                        <parameter name="buttonlocatorAccount" value="submitAccount"/>
+                        <parameter name="buttonlocatorsCreate" value="SubmitCreate"/>
+                    </include>
+                </methods>
             </class>
         </classes>
     </test>
-</suite> <!-- Suite -->
+</suite>
